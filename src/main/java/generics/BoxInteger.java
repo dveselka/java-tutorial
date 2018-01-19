@@ -11,4 +11,10 @@ public class BoxInteger extends AbstractValue<Integer> {
 		return value;
 	}
 
+	@Override
+	public int compareTo(Integer value) {
+		
+		return this.getValue().compareTo(value);
+	}
+
 }

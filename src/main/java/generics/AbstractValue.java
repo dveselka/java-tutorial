@@ -1,9 +1,9 @@
 package generics;
 
-public abstract class AbstractValue<T> {
+public abstract class AbstractValue<T> implements Comparable<T> {
 
-	T value;
+	protected T value;
 
-	abstract T getValue();
-
+	public abstract T getValue();
+	
 }

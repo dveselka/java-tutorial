@@ -10,5 +10,11 @@ public class BoxString extends AbstractValue<String> {
 	public String getValue() {
 		return value;
 	}
+	
+	@Override
+	public int compareTo(String value) {
+		
+		return this.getValue().compareTo(value);
+	}
 
 }
