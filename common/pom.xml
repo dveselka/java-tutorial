@@ -65,6 +65,61 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>
+							package
+						</phase>
+						<configuration>
+							<target>
+								<echoproperties />
+								<property name="compile_classpath" refid="maven.compile.classpath" />
+								<property name="runtime_classpath" refid="maven.runtime.classpath" />
+								<property name="test_classpath" refid="maven.test.classpath" />
+								<property name="plugin_classpath" refid="maven.plugin.classpath" />
+								 
+								<echo message="compile classpath: ${compile_classpath}" />
+								<echo message="runtime classpath: ${runtime_classpath}" />
+								<echo message="test classpath:    ${test_classpath}" />
+								<echo message="plugin classpath:  ${plugin_classpath}" />
+								<jar destfile="${project.build.directory}/ant-generated.jar" 
+								 basedir="${project.build.directory}/classes"
+								 includes="$(project.build.directory}//classes**/*.class" 
+								 excludes="**/Test.class"
+								 />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<groupId>dave</groupId>
+					<artifactId>ant-jar</artifactId>
+					<version>1.0</version>
+					<packaging>jar</packaging>
+					<file>target/ant-generated.jar</file>
+					<generatePom>true</generatePom>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install-jar-lib</id>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 	</build>
