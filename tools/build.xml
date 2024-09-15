@@ -1,0 +1,21 @@
+<project name="properties-to-sed">
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="target/lib/ant-contrib-1.0b3.jar"/>
+		</classpath>
+	</taskdef>
+
+	<target name="convert">
+		
+		<property file="dave.properties" prefix="dave."/>
+		<propertyselector property="dave" match="dave\.(.*)" select="\1"/>
+		
+		<for param="key" list="${dave}">
+			<sequential>
+				<echo>@{key}=${dave.@{key}}</echo>
+				<echo message="s#dave.@{key}#${dave.@{key}}#g${line.separator}" file="replace-dave-props.sed" append="true"/>
+			</sequential>
+		</for>
+	</target>
+</project>
