@@ -14,7 +14,7 @@
 		<for param="key" list="${dave}">
 			<sequential>
 				<echo>@{key}=${dave.@{key}}</echo>
-				<echo message="s#dave.@{key}#${dave.@{key}}#g${line.separator}" file="replace-dave-props.sed" append="true"/>
+				<echo message="s#@{key}#${dave.@{key}}#g${line.separator}" file="replace-dave-props.sed" append="true"/>
 			</sequential>
 		</for>
 	</target>
