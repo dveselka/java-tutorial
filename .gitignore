@@ -1,0 +1,16 @@
+**/target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/release.properties
+/.settings/
+/*.log
+/*.tmp
+/.classpath
+/.project
+/.idea/
+/*.iml
+/.vscode/
+*.jar
+*.war
+*.class
+
